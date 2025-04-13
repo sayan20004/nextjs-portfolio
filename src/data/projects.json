@@ -1,0 +1,59 @@
+{
+  "projects": [
+    {
+      "name": "Secure Credential Manager Extension",
+      "description": "A browser extension to securely store private credentials with auto-fill capabilities. Supports Web2 (Google/Email) and Web3-based login, with authorization confirmation for sensitive actions.",
+      "image": "/secure-vault.png",
+      "tags": ["Next.js", "TailwindCSS", "Express", "MongoDB", "Web3", "Chrome Extension"],
+      "links": []
+    },
+    {
+      "name": "Bitly Clone - URL Shortener",
+      "description": "A full-stack application where users can shorten links, with a temporary link display feature and backend management of link redirection.",
+      "image": "/bitly-clone.png",
+      "tags": ["Next.js", "Express", "MongoDB", "TailwindCSS"],
+      "links": []
+    },
+    {
+      "name": "College Website Redesign (Hackathon)",
+      "description": "Led UI/UX design and development for a modern landing page showcasing BCA, BBA, and BHM courses. Merged Indian traditional themes with modern scroll animations using GSAP, Locomotive.js, and Three.js.",
+      "image": "/hackathon-banner.png",
+      "tags": ["GSAP", "Three.js", "Locomotive.js", "Lenis.js", "UI/UX", "Hackathon"],
+      "links": []
+    },
+    {
+      "name": "Self-Destructing File Sharing",
+      "description": "A PHP-based secure file sharing system with expiring links, auto-deletion, encryption, and optional password protection. Admin panel for tracking usage.",
+      "image": "/self-destroy-file.png",
+      "tags": ["PHP", "MySQL", "File Encryption", "JWT", "Bootstrap"],
+      "links": []
+    },
+    {
+      "name": "Virtual Eyewear Try-On",
+      "description": "Web app allowing users to upload photos or use a webcam to try on different glasses virtually. Built with PHP and WebGL for realistic fitting.",
+      "image": "/virtual-eye-try-on.png",
+      "tags": ["PHP", "WebGL", "Canvas API", "Face Detection"],
+      "links": []
+    },
+    {
+      "name": "Phone-Controlled Car",
+      "description": "A WiFi/Bluetooth controlled smart car prototype. Controlled via a smartphone app for movement and control.",
+      "image": "/car-controll.png",
+      "tags": ["IoT", "Arduino", "Bluetooth", "WiFi", "Mobile Control"],
+      "links": []
+    },
+    {
+      "name": "Triopedia - YouTube Channel",
+      "description": "A Bengali-language channel focused on tech content, storytelling, UI/UX design, roasts, and awareness videos with cinematic editing and narrative depth.",
+      "image": "/triopedia.png",
+      "tags": ["YouTube", "Content Creation", "Storytelling", "UI/UX", "Social Awareness", "Video Editing"],
+      "links": [
+        {
+          "name": "YouTube",
+          "href": "https://youtube.com/@triopedia",
+          "icon": "youtube"
+        }
+      ]
+    }
+  ]
+}

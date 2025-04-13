@@ -1,0 +1,42 @@
+{
+  "education": [
+    {
+      "name": "Contai College of Learning and Management Science (CCLMS)",
+      "href": "https://www.cclms.org",
+      "title": "Bachelor of Computer Applications (BCA)",
+      "logo": "/clg.png",
+      "start": "Aug 2023",
+      "end": "May 2025",
+      "description": [
+        "Organized intra-college Hackathon and Quiz for BCA students",
+        "Led the UI/UX design for a modern landing page for the college website",
+        "Focused on real-world projects involving web development, IoT, and UI/UX"
+      ],
+      "links": [
+        {
+          "name": "Hackathon Website Project",
+          "href": "https://linkwillupdatesoon.com",
+          "icon": "globe"
+        },
+        {
+          "name": "YouTube Channel - Triopedia",
+          "href": "https://youtube.com/@triopedia",
+          "icon": "youtube"
+        }
+      ]
+    },
+    {
+      "name": "Higher Secondary Education",
+      "href": "",
+      "title": "Bio-Science Stream",
+      "logo": "/school.svg",
+      "start": "Jun 2020",
+      "end": "Mar 2022",
+      "description": [
+        "Studied Bio, Geography, and Nutrition",
+        "Developed foundational coding and problem-solving skills",
+        "Started exploring UI/UX and web development"
+      ]
+    }
+  ]
+}

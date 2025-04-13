@@ -1,0 +1,53 @@
+{
+  "career": [
+    {
+      "name": "Personal Projects",
+      "href": "https://github.com/sayan20004",
+      "title": "Full Stack Developer & UI/UX Designer",
+      "logo": "/github.png",
+      "start": "2022",
+      "description": [
+        "Developed a secure browser extension for saving and autofilling private credentials with Web3/Web2 login authentication {link will be updated soon}",
+        "Built and deployed a Bitly-style URL shortener app with temporary link UI and backend link handling {link will be updated soon}",
+        "Created a self-destructing file sharing system in PHP with encryption, password protection, and time/download-based expiration {link will be updated soon}",
+        "Designed a modern landing page for the college website using GSAP, Three.js, and Locomotive.js with an Indian-themed UI {link will be updated soon}"
+      ],
+      "links": [
+        {
+          "name": "GitHub Profile",
+          "href": "https://github.com/sayan20004",
+          "icon": "github"
+        },
+        {
+          "name": "Triopedia YouTube Channel",
+          "href": "https://youtube.com/@triopedia",
+          "icon": "youtube"
+        }
+      ]
+    },
+    {
+      "name": "Triopedia",
+      "href": "https://youtube.com/@triopedia",
+      "title": "Content Creator & Visual Storyteller",
+      "logo": "/triopedia.png",
+      "start": "2023",
+      "description": [
+        "Produce tech explainers, social awareness videos, cinematic storytelling, and UI/UX breakdowns in Bengali",
+        "Write, direct, and edit videos covering coding topics, tech myths, and narrative-driven commentary",
+        "Handle design, scripting, shooting, and editing all under a solo creator model"
+      ]
+    },
+    {
+      "name": "College Hackathon Organizer",
+      "href": "",
+      "title": "Event Head (Intra-College Hackathon & Quiz)",
+      "logo": "/hackathon-logo.png",
+      "start": "2024",
+      "description": [
+        "Organized and mentored participants in a college-wide Hackathon for BCA students",
+        "Led the UI/UX design concept integrating modern scrolling libraries and traditional Indian aesthetics",
+        "Managed coordination between departments (BCA, BBA, BHM) to reflect their fields in the design and experience"
+      ]
+    }
+  ]
+}

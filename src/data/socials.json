@@ -1,0 +1,19 @@
+{
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "href": "https://www.linkedin.com/in/sayan-maitydev/",
+      "icon": "linkedin"
+    },
+    {
+      "name": "GitHub",
+      "href": "https://github.com/sayan20004",
+      "icon": "github"
+    },
+    {
+      "name": "Email",
+      "href": "mailto:sayanmaity600@gmail.com",
+      "icon": "mail"
+    }
+  ]
+}
