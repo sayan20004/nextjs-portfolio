@@ -33,11 +33,11 @@ export default async function Home() {
           priority
         />
         <div className="flex flex-col">
-          <h1 className="title text-5xl">hi Sayan here 👋</h1>
+          <h1 className="title text-5xl">Hi Sayan here 👋</h1>
           <p className="mt-4 font-light">
             {/* Update my age */}
             {new Date().getFullYear() - SAYAN_BIRTH_YEAR}
-            -year-old <s>game</s> full-stack web developer from India
+            -years-old <s>game</s> full-stack web developer from India
           </p>
           <p className="mt-2 font-light">
             I like to develop full-stack web apps, share thoughts about tech on{" "}
