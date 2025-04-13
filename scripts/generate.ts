@@ -5,7 +5,7 @@ import { DocumentInterface } from "@langchain/core/documents";
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { getVectorStore } from "../src/lib/vectordb";
+
 import * as fs from "fs";
 import * as path from "path";
 
@@ -29,7 +29,7 @@ async function generateEmbeddings() {
   try {
     console.log("🚀 Starting embeddings generation...");
     
-    const vectorStore = await getVectorStore();
+    
     
     // Load and process routes
     console.log("📂 Loading routes...");
@@ -142,7 +142,7 @@ async function generateEmbeddings() {
     // Add documents to vector store (only if we have any)
     if (allSplitDocuments.length > 0) {
       console.log("📥 Adding documents to mock vector store...");
-      await vectorStore.addDocuments(allSplitDocuments);
+      
     } else {
       console.log("⚠️ No documents to add to vector store");
     }
