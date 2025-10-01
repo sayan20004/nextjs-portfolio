@@ -27,7 +27,7 @@ export default async function Home() {
         <Image
           className="rounded-lg"
           src="/sayanmaity.jpg"
-          alt="Photo of Ted"
+          alt="Sayan Maity, Full-Stack Web Developer"
           width={175}
           height={175}
           priority
