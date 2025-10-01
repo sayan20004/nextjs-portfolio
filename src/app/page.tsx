@@ -33,7 +33,7 @@ export default async function Home() {
           priority
         />
         <div className="flex flex-col">
-          <h1 className="title text-5xl">Hi Sayan here 👋</h1>
+          <h1 className="title text-5xl">Sayan Maity | Full-Stack Developer 👋</h1>
           <p className="mt-4 font-light">
             {/* Update my age */}
             {new Date().getFullYear() - SAYAN_BIRTH_YEAR}
