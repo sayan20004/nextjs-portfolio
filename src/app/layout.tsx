@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     icon: "/favicon.gif",
   },
    verification: {
-    google: "<meta name="google-site-verification" content="ykMn9LjBw33SJS2TIVtgvLmf0xgrSR9_oeR7n1DpXRo" />", // Replace with the actual code Google gives you
+    google: "ykMn9LjBw33SJS2TIVtgvLmf0xgrSR9_oeR7n1DpXRo", // Replace with the actual code Google gives you
   },
 };
 
