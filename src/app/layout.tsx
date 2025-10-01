@@ -15,8 +15,8 @@ const calistoga = Calistoga({
 });
 
 export const metadata: Metadata = {
-  title: "Sayan Maity",
-  description: "My personal site to showcase my developer work and opinions.",
+  title: "Sayan Maity | Full-Stack Web Developer & UI/UX Designer Portfolio",
+  description: "Sayan Maity is a Full-Stack Web Developer and UI/UX Designer (Next.js, React, MongoDB, Express) building high-impact projects. View his work, experience, and development philosophy here.",
   icons: {
     icon: "/favicon.gif",
   },
