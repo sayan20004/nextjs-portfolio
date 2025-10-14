@@ -1,11 +1,11 @@
 {
   "projects": [
-    {
-      "name": "Updating Soon",
-      "description": "",
-      "image": "",
-      "tags": [""],
+   {
+      "name": "College Website Redesign (Hackathon)",
+      "description": "Led UI/UX design and development for a modern landing page showcasing BCA, BBA, and BHM courses. Merged Indian traditional themes with modern scroll animations using GSAP, Locomotive.js, and Three.js.",
+      "image": "/hackathon-banner.png",
+      "tags": ["GSAP", "Three.js", "Locomotive.js", "Lenis.js", "UI/UX", "Hackathon"],
       "links": []
-    }
-  
+    },
+  ]
 }
