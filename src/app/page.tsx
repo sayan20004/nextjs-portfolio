@@ -14,7 +14,7 @@ import Link from "next/link";
 import path from "path";
 
 // ✅ Static import for automatic blur placeholder
-import sayanImage from "@/public/sayanImage.jpeg";
+import sayanImage from "@/public/sayanmaity.jpg";
 
 const blogDirectory = path.join(process.cwd(), "content");
 const SAYAN_BIRTH_YEAR = 2004;
