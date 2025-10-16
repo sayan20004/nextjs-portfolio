@@ -13,6 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 
+// ✅ Static import for automatic blur placeholder
+import sayanImage from "@/public/images/sayanmaity.jpg";
+
 const blogDirectory = path.join(process.cwd(), "content");
 const SAYAN_BIRTH_YEAR = 2004;
 const LIMIT = 2;
@@ -26,25 +29,25 @@ export default async function Home() {
       <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
         <Image
           className="rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105"
-          src="/sayanmaity.jpg"
+          src={sayanImage}
           alt="Sayan Maity, Full-Stack Web Developer"
           width={175}
           height={175}
+          placeholder="blur" // ✅ enables blur effect
           priority
-          loading="eager"
         />
 
         <div className="flex flex-col">
           <h1 className="title text-5xl">
-            Sayan Maity | Full-Stack Developer 👋
+            Sayan Maity, Full-Stack Developer
           </h1>
 
           <p className="mt-4 font-light text-neutral-700">
-            {age}-years-old <s>game</s> full-stack web developer from India
+            {age}-years-old <s>game</s> full-stack web developer from India,WB
           </p>
 
           <p className="mt-2 font-light text-neutral-700">
-            I like to develop full-stack web apps, share thoughts about tech on{" "}
+            Currently building Chetna, share thoughts about tech on{" "}
             <Link
               href="https://www.instagram.com/sayanwas/"
               target="_blank"
