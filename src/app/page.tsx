@@ -47,15 +47,23 @@ export default async function Home() {
           </p>
 
           <p className="mt-2 font-light text-neutral-700">
-            Currently building Chetna, share thoughts about tech on{" "}
-            <Link
-              href="https://www.instagram.com/sayanwas/"
-              target="_blank"
-              className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              INSTA.
-            </Link>
-          </p>
+  Currently building{" "}
+
+  <Link
+    href="https://ccstudios.vercel.app"
+    className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
+  >
+    Chetna
+  </Link>
+  , share thoughts about tech on{" "}
+  <Link
+    href="https://www.instagram.com/sayanwas/"
+    target="_blank"
+    className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
+  >
+    INSTA.
+  </Link>
+</p>
 
           <div className="mt-4 flex items-center gap-2 text-sm text-neutral-800">
             <PinIcon className="size-5 text-primary" />
