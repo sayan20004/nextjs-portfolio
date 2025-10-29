@@ -1,11 +1,54 @@
 {
   "projects": [
-   {
-      "name": "College Website Redesign (Hackathon)",
-      "description": "Led UI/UX design and development for a modern landing page showcasing BCA, BBA, and BHM courses. Merged Indian traditional themes with modern scroll animations using GSAP, Locomotive.js, and Three.js.",
-      "image": "/hackathon-banner.png",
-      "tags": ["GSAP", "Three.js", "Locomotive.js", "Lenis.js", "UI/UX", "Hackathon"],
-      "links": []
-   }
+    {
+      "name": "AI Quiz Generator (Web)",
+      "description": "A full-stack MERN application that leverages the Google Gemini API to automatically generate multiple-choice quizzes from uploaded PDF notes.",
+      "image": "/ai-quiz-web.png",
+      "tags": ["React", "Node.js", "MongoDB", "Express.js", "Gemini API", "MERN"],
+      "links": [
+        {
+          "name": "GitHub",
+          "href": "https://github.com/sayan20004/aiquiz",
+          "icon": "github"
+        },
+        {
+          "name": "Live",
+          "href": "https://aiquizv2.vercel.app",
+          "icon": "globe"
+        }
+      ]
+    },
+    {
+      "name": "Uber Clone",
+      "description": "A full-stack MERN ride-sharing web. Features real-time location tracking, ride matching for Riders/Drivers, and fare estimation using Socket.IO and Google Maps API.",
+      "image": "/uber-clone-app.png",
+      "tags": ["React", "Node.js", "Socket.IO", "Google Maps API", "MERN", "Real-time"],
+      "links": [
+        {
+          "name": "GitHub",
+          "href": "https://github.com/sayan20004/UberClone",
+          "icon": "github"
+        },
+        {
+          "name": "Live",
+          "href": "https://uberclonev2.vercel.app",
+          "icon": "globe"
+        }
+      ]
+    },
+    {
+      "name": "AI Quiz App (iOS)",
+      "description": "A native iOS quiz application built with SwiftUI. Features user authentication, document uploading (PDFs), and AI-powered quiz generation with a results review screen.",
+      "image": "/ios-quiz-app.png",
+      "tags": ["Swift", "SwiftUI", "iOS", "AI", "Mobile App"],
+      "links": [
+        {
+          "name": "GitHub",
+          "href": "https://github.com/sayan20004/iosaiquizapp",
+          "icon": "github"
+        }
+      ]
+    }
   ]
 }
+
