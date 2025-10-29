@@ -40,7 +40,8 @@ const ContactConfirmationEmail: React.FC<Readonly<ContactConfirmationEmailProps>
   <div style={containerStyle}>
     <h1 style={headerStyle}>Thanks for reaching out, {name}!</h1>
     <p style={paragraphStyle}>
-      I've received your message and appreciate you contacting me. I'll review
+      {/* Changed I've to I&apos;ve */}
+      I&apos;ve received your message and appreciate you contacting me. I&apos;ll review
       it and get back to you as soon as possible.
     </p>
     <p style={paragraphStyle}>
