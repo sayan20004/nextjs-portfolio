@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback } from "@/components/ui/Avatar";
-import { IPost } from "@/lib/models";
 import { formatDate } from "@/lib/utils";
 import { Eye, Heart, MessageSquare } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -10,26 +9,37 @@ import LikeButton from "@/components/blog/LikeButton";
 import CommentSection from "@/components/blog/CommentSection";
 import { MdxComponents } from "@/components/mdx/MdxComponents";
 
+// --- START OF CHANGES ---
+import dbConnect from "@/lib/db";
+import { Post, type PlainPost } from "@/lib/models"; // 1. Import Post model and PlainPost type
+
 interface PageProps {
   params: { slug: string };
 }
 
-async function getPost(slug: string): Promise<IPost | null> {
+// 2. This function now talks to the DB directly
+async function getPost(slug: string): Promise<PlainPost | null> {
+  await dbConnect();
   try {
-    const res = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/posts/${slug}`,
-      {
-        next: { revalidate: 60 },
-      }
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data.data;
+    const post = await Post.findOneAndUpdate(
+      { slug: slug },
+      { $inc: { views: 1 } }, // Increment view count
+      { new: true }
+    )
+      .populate("commentCount")
+      .lean(); // Use .lean() to get a plain object
+
+    if (!post) {
+      return null;
+    }
+    // 3. Serialize the plain object to pass to client components
+    return JSON.parse(JSON.stringify(post));
   } catch (error) {
     console.error("Failed to fetch post:", error);
     return null;
   }
 }
+// --- END OF CHANGES ---
 
 export default async function PostPage({ params }: PageProps) {
   const post = await getPost(params.slug);
@@ -38,7 +48,8 @@ export default async function PostPage({ params }: PageProps) {
     notFound();
   }
 
-  const commentCount = (post as any).commentCount || 0;
+  // 4. Use the plain object's commentCount
+  const commentCount = post.commentCount || 0;
 
   return (
     <>
@@ -57,7 +68,8 @@ export default async function PostPage({ params }: PageProps) {
               <div className="flex flex-col text-sm">
                 <span className="font-medium">Sayan Maity</span>
                 <span className="text-muted-foreground">
-                  {formatDate(new Date(post.createdAt).toISOString())}
+                  {/* 5. Pass the 'createdAt' string to formatDate */}
+                  {formatDate(post.createdAt)}
                 </span>
               </div>
             </div>
@@ -94,17 +106,16 @@ export default async function PostPage({ params }: PageProps) {
 
         <hr />
 
-        {/* Comments */}
+        {/* 6. Pass data to client components */}
         <CommentSection slug={post.slug} />
       </article>
 
-      {/* Floating Like Button */}
       <LikeButton slug={post.slug} initialLikes={post.likes} />
     </>
   );
 }
 
-// Add a loading skeleton
+// This loading.tsx component will be used as a fallback
 export function Loading() {
   return (
     <article className="mt-8 flex animate-pulse flex-col gap-8 pb-16">
