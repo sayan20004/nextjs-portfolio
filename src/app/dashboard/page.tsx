@@ -1,6 +1,6 @@
 import PostEditor from "@/components/dashboard/PostEditor";
 import StatsCard from "@/components/dashboard/StatsCard";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth/next";
 
 import dbConnect from "@/lib/db";

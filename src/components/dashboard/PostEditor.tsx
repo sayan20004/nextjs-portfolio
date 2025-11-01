@@ -12,7 +12,7 @@ import { z } from "zod";
 import { Card, CardContent } from "@/components/ui/Card";
 import { type PlainPost } from "@/lib/models";
 import { slugify } from "@/lib/utils";
-import { useState }_ from "react";
+import { useState } from "react";
 import { UploadIcon } from "lucide-react";
 
 const postSchema = z.object({
