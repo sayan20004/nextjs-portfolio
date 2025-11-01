@@ -1,4 +1,5 @@
-export function Loading() {
+// Change "export function Loading()" to "export default function Loading()"
+export default function Loading() {
   return (
     <article className="mt-8 flex animate-pulse flex-col gap-8 pb-16">
       <section className="flex flex-col gap-4">
