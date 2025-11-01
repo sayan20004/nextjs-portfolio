@@ -7,7 +7,8 @@ import { IComment } from "@/lib/models";
 import { formatDate } from "@/lib/utils";
 import { PaperPlaneIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback } from "@/components/ui/Avatar";
-import { useEffect, useState } from "react";
+// 1. Import useCallback
+import { useEffect, useState, useCallback } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,7 +36,8 @@ export default function CommentSection({ slug }: Props) {
     resolver: zodResolver(commentSchema),
   });
 
-  const fetchComments = async () => {
+  // 2. Wrap fetchComments in useCallback
+  const fetchComments = useCallback(async () => {
     try {
       const res = await fetch(`/api/posts/${slug}/comments`);
       const data = await res.json();
@@ -47,11 +49,12 @@ export default function CommentSection({ slug }: Props) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [slug]); // 3. Add slug as the dependency for useCallback
 
+  // 4. Update useEffect to depend on the stable fetchComments function
   useEffect(() => {
     fetchComments();
-  }, [slug]);
+  }, [fetchComments]);
 
   const onSubmit: SubmitHandler<CommentInputs> = async (data) => {
     try {

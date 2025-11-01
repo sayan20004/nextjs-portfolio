@@ -5,13 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/Card";
-// 1. Import the new PlainPost type
 import { type PlainPost } from "@/lib/models";
-import { Eye, Heart, MessageSquare } from "lucide-react";
+import { Eye, Heart, MessageSquare, PencilIcon } from "lucide-react";
 import Link from "next/link";
+import DeletePostButton from "./DeletePostButton"; // <-- Import new component
+import { Button } from "../ui/Button";
 
 interface Props {
-  posts: PlainPost[]; // 2. Use PlainPost[] as the prop type
+  posts: PlainPost[];
 }
 
 export default function StatsCard({ posts }: Props) {
@@ -26,25 +27,41 @@ export default function StatsCard({ posts }: Props) {
       <CardContent className="flex max-h-[600px] flex-col gap-4 overflow-y-auto">
         {posts.length > 0 ? (
           posts.map((post) => (
-            <Link
-              href={`/blog/${post.slug}`}
+            <div
               key={post.slug}
-              className="rounded-lg border p-4 transition-colors hover:bg-muted/50"
+              className="flex items-center justify-between rounded-lg border p-4"
             >
-              <h4 className="font-medium">{post.title}</h4>
-              <div className="mt-2 flex gap-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Heart className="size-4" /> {post.likes}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Eye className="size-4" /> {post.views}
-                </span>
-                <span className="flex items-center gap-1">
-                  <MessageSquare className="size-4" />{" "}
-                  {post.commentCount || 0}
-                </span>
+              <div className="flex-1">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="font-medium hover:underline"
+                >
+                  {post.title}
+                </Link>
+                <div className="mt-2 flex gap-4 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Heart className="size-4" /> {post.likes}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Eye className="size-4" /> {post.views}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MessageSquare className="size-4" />{" "}
+                    {post.commentCount || 0}
+                  </span>
+                </div>
               </div>
-            </Link>
+              <div className="ml-4 flex gap-2">
+                {/* --- EDIT BUTTON --- */}
+                <Button variant="outline" size="icon" asChild>
+                  <Link href={`/dashboard/edit/${post._id}`}>
+                    <PencilIcon className="size-4" />
+                  </Link>
+                </Button>
+                {/* --- DELETE BUTTON --- */}
+                <DeletePostButton postId={post._id} />
+              </div>
+            </div>
           ))
         ) : (
           <p className="text-sm text-muted-foreground">No posts yet.</p>

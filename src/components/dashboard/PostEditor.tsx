@@ -10,15 +10,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Card, CardContent } from "@/components/ui/Card";
-
-// Slugify function
-const slugify = (str: string) =>
-  str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+import { type PlainPost } from "@/lib/models";
+import { slugify } from "@/lib/utils";
+import { useState }_ from "react";
+import { UploadIcon } from "lucide-react";
 
 const postSchema = z.object({
   title: z.string().min(1, "Title is required."),
@@ -28,38 +23,102 @@ const postSchema = z.object({
 });
 type PostInputs = z.infer<typeof postSchema>;
 
-export default function PostEditor() {
+interface Props {
+  postToEdit?: PlainPost;
+}
+
+export default function PostEditor({ postToEdit }: Props) {
   const router = useRouter();
+  const [isUploading, setIsUploading] = useState(false);
+
+  // Check if we are in edit mode
+  const isEditMode = !!postToEdit;
+
   const {
     register,
     handleSubmit,
     reset,
     watch,
+    setValue, // We'll use this to set the thumbnail URL
     formState: { errors, isSubmitting },
   } = useForm<PostInputs>({
     resolver: zodResolver(postSchema),
+    // Set default values if in edit mode
+    defaultValues: {
+      title: postToEdit?.title || "",
+      description: postToEdit?.description || "",
+      thumbnail: postToEdit?.thumbnail || "",
+      content: postToEdit?.content || "",
+    },
   });
 
   const title = watch("title");
   const slug = title ? slugify(title) : "";
 
-  const onSubmit: SubmitHandler<PostInputs> = async (data) => {
+  // Handle file upload
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    toast.info("Uploading image...");
+
     try {
-      const res = await fetch("/api/posts", {
+      const res = await fetch(`/api/upload?filename=${file.name}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, slug }),
+        body: file,
       });
 
-      if (!res.ok) throw new Error("Failed to create post");
+      if (!res.ok) throw new Error("Upload failed");
 
-      toast.success("Post created successfully!");
-      reset();
-      router.refresh(); // Refresh server components to show new post in stats
+      const blob = await res.json();
+      setValue("thumbnail", blob.url, { shouldValidate: true });
+      toast.success("Image uploaded!");
+    } catch (error) {
+      toast.error("Upload failed. Please try again.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const onSubmit: SubmitHandler<PostInputs> = async (data) => {
+    try {
+      let res;
+      if (isEditMode) {
+        // --- UPDATE (PUT) ---
+        res = await fetch(`/api/posts/manage/${postToEdit._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, slug }),
+        });
+      } else {
+        // --- CREATE (POST) ---
+        res = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, slug }),
+        });
+      }
+
+      if (!res.ok) throw new Error("Failed to save post");
+
+      toast.success(
+        isEditMode ? "Post updated successfully!" : "Post created successfully!"
+      );
+
+      if (isEditMode) {
+        router.push("/dashboard"); // Go back to dashboard
+      } else {
+        reset(); // Clear form on create
+      }
+      
+      router.refresh(); // Refresh dashboard data
     } catch (error) {
       toast.error("An error occurred.");
     }
   };
+
+  const isLoading = isSubmitting || isUploading;
 
   return (
     <Card>
@@ -86,16 +145,40 @@ export default function PostEditor() {
               <p className="input-error">{errors.description.message}</p>
             )}
           </div>
-          <div>
-            <Input
-              id="thumbnail"
-              placeholder="Thumbnail Image URL (e.g., Unsplash)"
-              {...register("thumbnail")}
-            />
+          
+          {/* --- MODIFIED THUMBNAIL SECTION --- */}
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-2">
+              <Input
+                id="thumbnail"
+                placeholder="Thumbnail Image URL"
+                {...register("thumbnail")}
+                className="flex-1"
+              />
+              <Button
+                type="button"
+                variant="outline"
+                asChild
+                className="relative cursor-pointer"
+              >
+                <div>
+                  <UploadIcon className="mr-2 size-4" />
+                  Upload
+                  <input
+                    type="file"
+                    onChange={handleFileUpload}
+                    accept="image/*"
+                    className="absolute inset-0 size-full cursor-pointer opacity-0"
+                    disabled={isLoading}
+                  />
+                </div>
+              </Button>
+            </div>
             {errors.thumbnail && (
               <p className="input-error">{errors.thumbnail.message}</p>
             )}
           </div>
+          
           <div>
             <Textarea
               id="content"
@@ -107,9 +190,9 @@ export default function PostEditor() {
               <p className="input-error">{errors.content.message}</p>
             )}
           </div>
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting && <ReloadIcon className="mr-2 animate-spin" />}
-            Publish Post
+          <Button type="submit" disabled={isLoading}>
+            {isLoading && <ReloadIcon className="mr-2 animate-spin" />}
+            {isEditMode ? "Update Post" : "Publish Post"}
           </Button>
         </form>
       </CardContent>

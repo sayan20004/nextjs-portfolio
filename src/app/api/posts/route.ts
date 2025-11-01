@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/db";
 import { Post } from "@/lib/models";
-import { authOptions } from "../auth/[...nextauth]/route";
+// Import from the new central file
+import { authOptions } from "@/lib/auth"; 
 import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -22,7 +23,8 @@ export async function GET() {
 
 // POST a new post (Protected)
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  // Now this will work
+  const session = await getServerSession(authOptions); 
   if (!session) {
     return NextResponse.json(
       { success: false, error: "Unauthorized" },
@@ -35,7 +37,7 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
     const post = await Post.create(data); // Create new post
     return NextResponse.json({ success: true, data: post }, { status: 201 });
-  } catch (error) { // <-- The underscore was removed from this line
+  } catch (error) { 
     console.error("Post creation error:", error);
     return NextResponse.json(
       { success: false, error: "Server error" },
