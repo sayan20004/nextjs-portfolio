@@ -1,15 +1,20 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ADD THIS BLOCK
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
-      // Add any other domains you will use for images
+      // --- ADD THIS BLOCK ---
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+      },
+      // ----------------------
     ],
   },
 };
 
-export default nextConfig;      
+export default nextConfig;
