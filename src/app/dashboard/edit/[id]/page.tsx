@@ -8,8 +8,8 @@ interface PageProps {
 }
 
 async function getPostToEdit(id: string): Promise<PlainPost | null> {
-  await dbConnect();
   try {
+    await dbConnect();
     const post = await Post.findById(id).lean();
     if (!post) {
       return null;

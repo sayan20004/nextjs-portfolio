@@ -19,8 +19,9 @@ interface PageProps {
 
 // 2. This function now talks to the DB directly
 async function getPost(slug: string): Promise<PlainPost | null> {
-  await dbConnect();
   try {
+    await dbConnect();
+
     const post = await Post.findOneAndUpdate(
       { slug: slug },
       { $inc: { views: 1 } }, // Increment view count

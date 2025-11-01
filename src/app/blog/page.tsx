@@ -5,8 +5,9 @@ import dbConnect from "@/lib/db";
 
 // 2. This function will now return Promise<PlainPost[]>
 async function getPosts(): Promise<PlainPost[]> {
-  await dbConnect();
   try {
+    await dbConnect();
+
     const posts = await Post.find({})
       .sort({ createdAt: -1 })
       .populate("commentCount")
