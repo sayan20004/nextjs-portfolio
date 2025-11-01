@@ -1,9 +1,9 @@
 import dbConnect from "@/lib/db";
 import { Post } from "@/lib/models";
-// Import from the new central file
 import { authOptions } from "@/lib/auth"; 
 import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache"; // <-- 1. ADD THIS IMPORT
 
 // GET all posts
 export async function GET() {
@@ -23,7 +23,6 @@ export async function GET() {
 
 // POST a new post (Protected)
 export async function POST(req: NextRequest) {
-  // Now this will work
   const session = await getServerSession(authOptions); 
   if (!session) {
     return NextResponse.json(
@@ -36,6 +35,13 @@ export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
     const post = await Post.create(data); // Create new post
+
+    // --- 2. ADD THESE LINES TO FIX THE BUG ---
+    revalidatePath("/blog");
+    revalidatePath(`/blog/${post.slug}`);
+    revalidatePath("/dashboard");
+    // ----------------------------------------
+
     return NextResponse.json({ success: true, data: post }, { status: 201 });
   } catch (error) { 
     console.error("Post creation error:", error);
