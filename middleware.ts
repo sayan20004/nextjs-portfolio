@@ -1,9 +1,17 @@
 export { default } from "next-auth/middleware";
 
-// This protects the dashboard AND all its sub-routes
 export const config = {
   matcher: [
+    /*
+     * Match all dashboard pages
+     */
     "/dashboard",
-    "/dashboard/:path*"
+    "/dashboard/:path*",
+
+    /*
+     * Match all protected API routes
+     */
+    "/api/posts/manage/:path*",
+    "/api/upload"
   ],
 };
