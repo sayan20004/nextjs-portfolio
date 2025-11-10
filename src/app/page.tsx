@@ -2,29 +2,19 @@ import Experience from "@/components/Experience";
 import LinkWithIcon from "@/components/LinkWithIcon";
 import Projects from "@/components/Projects";
 import Socials from "@/components/Socials";
-import { Button, buttonVariants } from "@/components/ui/Button"; // 1. Import buttonVariants
-import { cn } from "@/lib/utils"; // 2. Import cn
+import { Button, buttonVariants } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
-// --- (Other imports) ---
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu";
 import {
   ArrowRightIcon,
   FileDown,
   PinIcon,
-  ChevronDown,
 } from "lucide-react";
-// -----------------------
 
 import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 
-// ✅ Static import for automatic blur placeholder
 import sayanImage from "../../public/sayanmaity.jpg";
 
 const blogDirectory = path.join(process.cwd(), "content");
@@ -36,21 +26,18 @@ export default async function Home() {
 
   return (
     <article className="mt-8 flex flex-col gap-16 pb-16">
-      {/* Hero Section */}
       <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
-        {/* ... (Image component) ... */}
         <Image
           className="rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105"
           src={sayanImage}
           alt="Sayan Maity, Full-Stack Web Developer"
           width={175}
           height={175}
-          placeholder="blur" // ✅ enables blur effect
+          placeholder="blur"
           priority
         />
 
         <div className="flex flex-col">
-          {/* ... (h1 and p tags) ... */}
           <h1 className="title text-5xl">
             Sayan Maity, Full-Stack Developer
           </h1>
@@ -83,42 +70,36 @@ export default async function Home() {
           </div>
 
           <div className="mt-8 flex items-center gap-6">
-            <DropdownMenu>
-              {/* --- 3. This is the modified block --- */}
-              <DropdownMenuTrigger
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "default" })
-                )}
-              >
-                <span className="font-semibold">Resume</span>
-                <ChevronDown className="ml-2 size-5" />
-              </DropdownMenuTrigger>
-              {/* ---------------------------------- */}
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem asChild>
-                  <Link href="/sayanmaity_cv.pdf" target="_blank" className="flex cursor-pointer items-center gap-2">
-                    <FileDown className="size-4" />
-                    <span>Main CV (sayanmaity_cv.pdf)</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/sayancheck.pdf" target="_blank" className="flex cursor-pointer items-center gap-2">
-                    <FileDown className="size-4" />
-                    <span>Alternate CV (sayancheck.pdf)</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Link
+              href="/SayanMaity_Resume.pdf"
+              target="_blank"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "default" }),
+                "font-semibold"
+              )}
+            >
+              <FileDown className="mr-2 size-4" />
+              MERN CV
+            </Link>
+            {/* <Link
+              href="/sayancheck.pdf"
+              target="_blank"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "default" }),
+                "font-semibold"
+              )}
+            >
+              <FileDown className="mr-2 size-4" />
+              Alternate CV
+            </Link> */}
 
             <Socials />
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
       <Experience />
 
-      {/* Featured Projects Section */}
       <section className="flex flex-col gap-8">
         <div className="flex items-center justify-between">
           <h2 className="title text-2xl sm:text-3xl">Featured Projects</h2>

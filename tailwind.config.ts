@@ -61,6 +61,7 @@ const config: Config = {
         serif: "var(--font-serif)",
       },
       keyframes: {
+        // --- YOUR EXISTING KEYFRAMES ---
         "accordion-down": {
           from: {
             height: "0",
@@ -77,10 +78,50 @@ const config: Config = {
             height: "0",
           },
         },
+        
+        // --- ADD THESE NEW KEYFRAMES ---
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
+        "fade-in-0": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "zoom-in-95": {
+          from: { opacity: "0", transform: "scale(.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-in-from-top-2": {
+          from: { transform: "translateY(-0.5rem)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-in-from-right-2": {
+          from: { transform: "translateX(0.5rem)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-from-bottom-2": {
+          from: { transform: "translateY(0.5rem)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-in-from-left-2": {
+          from: { transform: "translateX(-0.5rem)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
       },
       animation: {
+        // --- YOUR EXISTING ANIMATIONS ---
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+
+        // --- ADD THESE NEW ANIMATIONS ---
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "fade-in-0": "fade-in-0 0.2s ease-out",
+        "zoom-in-95": "zoom-in-95 0.2s ease-out",
+        "slide-in-from-top-2": "slide-in-from-top-2 0.2s ease-out",
+        "slide-in-from-right-2": "slide-in-from-right-2 0.2s ease-out",
+        "slide-in-from-bottom-2": "slide-in-from-bottom-2 0.2s ease-out",
+        "slide-in-from-left-2": "slide-in-from-left-2 0.2s ease-out",
       },
     },
   },
