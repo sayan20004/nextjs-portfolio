@@ -5,6 +5,7 @@ import { DocumentInterface } from "@langchain/core/documents";
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import matter from "gray-matter"; // <-- 1. ADD THIS IMPORT
 
 import * as fs from "fs";
 import * as path from "path";
@@ -94,20 +95,26 @@ async function generateEmbeddings() {
       true
     );
 
+    // --- 2. REPLACE THIS WHOLE BLOCK ---
     const processedPosts = posts
       .filter((post) => post.metadata.source.endsWith(".mdx"))
       .map((post): DocumentInterface => {
-        const parts = post.pageContent.split("---");
-        const frontmatter = parts.length > 1 ? parts[1] : post.pageContent;
+        // Use gray-matter to parse the file
+        const { content, data } = matter(post.pageContent);
+        
+        // 'content' is the actual MDX body
+        // 'data' is the parsed frontmatter object (e.g., data.title)
         return { 
-          pageContent: frontmatter.trim(), 
+          pageContent: content.trim(), // <-- THE FIX: Use the MDX body
           metadata: {
             ...post.metadata,
             source: "blog",
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            ...(data as object), // Spread the parsed frontmatter into metadata
           }
         };
       });
+    // --- END OF REPLACEMENT ---
 
     console.log(`✅ Loaded ${processedPosts.length} blog posts`);
 
