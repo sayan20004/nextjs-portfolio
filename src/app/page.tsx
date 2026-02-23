@@ -43,7 +43,7 @@ export default async function Home() {
           </h1>
 
           <p className="mt-4 font-light text-neutral-700">
-            {age}-years-old <s>game</s> full-stack web developer from India,WB
+            {age}-years-old full-stack web developer from India,WB
           </p>
 
           <p className="mt-2 font-light text-neutral-700">
