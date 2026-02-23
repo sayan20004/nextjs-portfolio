@@ -49,18 +49,18 @@ export default async function Home() {
           <p className="mt-2 font-light text-neutral-700">
             Currently building{" "}
             <Link
-              href="https://ccstudios.vercel.app"
+              href="https://swiftkitbetav1.vercel.app"
               className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
             >
-              Chetna
+              SwiftKiit - Swift ui Components
             </Link>
-            , share thoughts about tech on{" "}
+            , Working at{" "}
             <Link
-              href="https://www.instagram.com/sayanwas/"
+              href="https://www.wearetechinnovator.com"
               target="_blank"
               className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
             >
-              INSTA.
+              as a Jr. Dev
             </Link>
           </p>
 
