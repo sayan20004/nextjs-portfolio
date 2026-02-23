@@ -52,7 +52,7 @@ export default async function Home() {
               href="https://swiftkitbetav1.vercel.app"
               className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
             >
-              SwiftKiit - Swift ui Components
+              SwiftKiit
             </Link>
             , Working at {" "}
             <Link
@@ -62,7 +62,7 @@ export default async function Home() {
             >
               TechInnovator
             </Link>
-            as a Jr. Dev
+             as a Jr. Dev
           </p>
 
           <div className="mt-4 flex items-center gap-2 text-sm text-neutral-800">
