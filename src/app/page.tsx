@@ -42,7 +42,7 @@ export default async function Home() {
             Sayan Maity
           </h1>
 
-          <p className="mt-4 font-light text-neutral-700">
+          <p className="mt-4 font-light text-neutral-200">
             {age}-years-old full-stack web developer from India,WB
           </p>
 
