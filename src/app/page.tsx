@@ -39,7 +39,7 @@ export default async function Home() {
 
         <div className="flex flex-col">
           <h1 className="title text-5xl">
-            Sayan Maity, Full-Stack Developer
+            Sayan Maity
           </h1>
 
           <p className="mt-4 font-light text-neutral-700">
