@@ -54,14 +54,15 @@ export default async function Home() {
             >
               SwiftKiit - Swift ui Components
             </Link>
-            , Working at{" "}
+            , Working at {" "}
             <Link
               href="https://www.wearetechinnovator.com"
               target="_blank"
               className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
             >
-              as a Jr. Dev
+              TechInnovator
             </Link>
+            as a Jr. Dev
           </p>
 
           <div className="mt-4 flex items-center gap-2 text-sm text-neutral-800">
