@@ -60,7 +60,7 @@ export default async function Home() {
               target="_blank"
               className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
             >
-              TechInnovator 
+              TechInnovator {" "}
             </Link>
              as a Jr. Dev
           </p>
