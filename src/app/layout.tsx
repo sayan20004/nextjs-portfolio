@@ -12,6 +12,7 @@ import { Toaster } from "@/components/ui/Sonner"; // Make sure this path is corr
 
 // Import the new Chatbot component
 import Chatbot from "@/components/chat/Chatbot";
+import Analytics from "@/components/Analytics";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({
@@ -149,6 +150,7 @@ export default function RootLayout({
 
           {/* Add the global Chatbot component here */}
           <Chatbot />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

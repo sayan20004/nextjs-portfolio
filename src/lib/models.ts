@@ -54,7 +54,7 @@ export const Comment =
   models.Comment || model<IComment>("Comment", CommentSchema);
 export const Post = models.Post || model<IPost>("Post", PostSchema);
 export type PlainPost = {
-  _id: string; // Serialized from ObjectId
+  _id: string;
   title: string;
   slug: string;
   description: string;
@@ -62,6 +62,27 @@ export type PlainPost = {
   content: string;
   views: number;
   likes: number;
-  createdAt: string; // Serialized from Date
-  commentCount?: number; // This is added by .populate("commentCount")
+  createdAt: string;
+  commentCount?: number;
 };
+
+// ── Visitor Analytics ─────────────────────────────────────────────────────────
+
+export interface IPageView extends Document {
+  city: string;
+  country: string;
+  page: string;
+  duration: number; // seconds
+  createdAt: Date;
+}
+
+const PageViewSchema = new Schema<IPageView>({
+  city: { type: String, default: "Unknown" },
+  country: { type: String, default: "Unknown" },
+  page: { type: String, required: true },
+  duration: { type: Number, default: 0 },
+  createdAt: { type: Date, default: Date.now },
+});
+
+export const PageView =
+  models.PageView || model<IPageView>("PageView", PageViewSchema);
