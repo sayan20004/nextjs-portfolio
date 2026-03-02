@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sayanmaity.vercel.app/sitemap.xml
+Sitemap: https://sayanmaity.me/sitemap.xml
