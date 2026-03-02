@@ -1,119 +1,220 @@
-import Experience from "@/components/Experience";
-import LinkWithIcon from "@/components/LinkWithIcon";
-import Projects from "@/components/Projects";
-import Socials from "@/components/Socials";
-import { Button, buttonVariants } from "@/components/ui/Button";
+import Link from "next/link";
+import Image from "next/image"; // Re-add if used elsewhere, but not currently used in this design
 import { cn } from "@/lib/utils";
 
 import {
-  ArrowRightIcon,
-  FileDown,
-  PinIcon,
-} from "lucide-react";
+  FaTrophy,
+  FaGitAlt,
+  FaRocket,
+  FaBrain,
+  FaPaintBrush,
+  FaDownload,
+} from "react-icons/fa";
 
-import Image from "next/image";
-import Link from "next/link";
-import path from "path";
 
-import sayanImage from "../../public/sayanmaity.jpg";
-
-const blogDirectory = path.join(process.cwd(), "content");
-const SAYAN_BIRTH_YEAR = 2004;
-const LIMIT = 2;
-
-export default async function Home() {
-  const age = new Date().getFullYear() - SAYAN_BIRTH_YEAR;
-
+export default function Home() {
   return (
-    <article className="mt-8 flex flex-col gap-16 pb-16">
-      <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
-        <Image
-          className="rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105"
-          src={sayanImage}
-          alt="Sayan Maity, Full-Stack Web Developer"
-          width={175}
-          height={175}
-          placeholder="blur"
-          priority
-        />
+    <div className="mt-8 flex flex-col gap-12 pb-16 animate-blur-in">
+      <section className="flex flex-col gap-6">
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          Hi, I&apos;m Sayan Maity
+        </h1>
 
-        <div className="flex flex-col">
-          <h1 className="title text-5xl">
-            Sayan Maity
-          </h1>
+        <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+          <li className="flex items-start gap-2">
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+            <span>A full stack engineer from India, learning User experience</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+            <span>
+              Currently working as Jr. Dev at,{" "}
+              <Link href="https://www.wearetechinnovator.com" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                TechInnovator
+              </Link>
+            </span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+            <span>
+              Building{" "}
+              <Link href="https://swiftkitbetav1.vercel.app" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                SwiftKiit
+              </Link>
+              {" "}(Ready to use Components for your IOS Apps)
+            </span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+            <span>Reach out if you want to find a way to work together!</span>
+          </li>
+        </ul>
 
-          <p className="mt-4 font-light text-neutral-200">
-            {age}-years-old full-stack web developer from India,WB
-          </p>
-
-          <p className="mt-2 font-light text-neutral-200">
-            Currently building{" "}
-            <Link
-              href="https://swiftkitbetav1.vercel.app"
-              className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              SwiftKiit
-            </Link>
-            , Working at {" "}
-            <Link
-              href="https://www.wearetechinnovator.com"
-              target="_blank"
-              className="link font-semibold underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              TechInnovator 
-            </Link>
-             {" "}as a Jr. Dev
-          </p>
-
-          <div className="mt-4 flex items-center gap-2 text-sm text-neutral-800">
-            <PinIcon className="size-5 text-primary" />
-            <p className="font-semibold">India, West Bengal</p>
-          </div>
-
-          <div className="mt-8 flex items-center gap-6">
-            <Link
-              href="/SayanMaity_Resume.pdf"
-              target="_blank"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "default" }),
-                "font-semibold"
-              )}
-            >
-              <FileDown className="mr-2 size-4" />
-              MERN CV
-            </Link>
-            {/* <Link
-              href="/sayancheck.pdf"
-              target="_blank"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "default" }),
-                "font-semibold"
-              )}
-            >
-              <FileDown className="mr-2 size-4" />
-              Alternate CV
-            </Link> */}
-
-            <Socials />
-          </div>
+        <div>
+          <a
+            href="/SayanMaity_Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 rounded-md bg-secondary/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          >
+            <FaDownload size={12} />
+            Download CV
+          </a>
         </div>
       </section>
 
-      <Experience />
+      <section className="flex flex-col gap-6 ">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-xl">
+          Side Projects
+        </h2>
 
-      <section className="flex flex-col gap-8">
-        <div className="flex items-center justify-between">
-          <h2 className="title text-2xl sm:text-3xl">Featured Projects</h2>
-          <LinkWithIcon
-            href="/projects"
-            position="right"
-            icon={<ArrowRightIcon className="size-5" />}
-            text="view more"
-          />
-        </div>
+        <ul className="flex flex-col gap-4 text-sm">
+          <li className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4 group">
+            <span className="flex flex-wrap items-baseline gap-2">
+              <span className="font-semibold text-foreground">1.{" "}
+                <Link href="https://snappyv1.vercel.app" className="underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  Snappy
+                </Link>
+              </span>
+              <span className="text-muted-foreground">Advanced context based Todo WebApp</span>
+            </span>
+            <span className="flex items-center gap-2 shrink-0 text-sm text-muted-foreground">
+              10 users <span className="size-2 rounded-full bg-green-500"></span>
+            </span>
+          </li>
 
-        <Projects limit={LIMIT} />
+          <li className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4 group">
+            <span className="flex flex-wrap items-baseline gap-2">
+              <span className="font-semibold text-foreground">2.{" "}
+                <Link href="https://swiftkitbetav1.vercel.app" className="underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  Swiftkiit
+                </Link>
+              </span>
+              <span className="text-muted-foreground">helps make IOS apps faster</span>
+            </span>
+            <span className="flex items-center gap-2 shrink-0 text-sm text-muted-foreground">
+              20 users <span className="size-2 rounded-full bg-green-500"></span>
+            </span>
+          </li>
+
+          <li className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4 group">
+            <span className="flex flex-wrap items-baseline gap-2">
+              <span className="font-semibold text-foreground">3.{" "}
+                <Link href="https://screenshot-tool-beta.vercel.app" className="underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  Screenshot Tool
+                </Link>
+              </span>
+              <span className="text-muted-foreground">Instantly turn any website into shareable presentation.</span>
+            </span>
+            <span className="flex items-center gap-2 shrink-0 text-sm text-muted-foreground">
+              10 users
+            </span>
+          </li>
+
+          {/* <li className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4 group">
+            <span className="flex flex-wrap items-baseline gap-2">
+              <span className="font-semibold text-foreground">4.{" "}
+                <Link href="#" className="underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  Dumbel
+                </Link>
+              </span>
+              <span className="text-muted-foreground">match with developers, connect with people, etc.</span>
+            </span>
+            <span className="flex items-center gap-2 shrink-0 text-sm text-muted-foreground">
+              80 users
+            </span>
+          </li>
+
+          <li className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4 group">
+            <span className="flex flex-wrap items-baseline gap-2">
+              <span className="font-semibold text-foreground">5.{" "}
+                <Link href="#" className="underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  DevAltools
+                </Link>
+              </span>
+              <span className="text-muted-foreground">ai dev tools directory</span>
+            </span>
+            <span className="flex items-center gap-2 shrink-0 text-sm text-muted-foreground">
+              8 users
+            </span>
+          </li> */}
+        </ul>
       </section>
-    </article>
+
+      {/* <section className="flex flex-col gap-6 ">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-xl">
+          Open Source Contributions
+        </h2>
+
+        <ul className="flex flex-col gap-5 text-base">
+          <li className="flex items-start gap-3">
+            <SparklesIcon />
+            <span className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+              <Link href="#" className="font-semibold text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                AsyncAPI/website
+              </Link>
+              <span className="text-muted-foreground">Conference archive page, and some design fixes. (Dec 2024)</span>
+            </span>
+          </li>
+
+          <li className="flex items-start gap-3">
+            <GlobeIcon />
+            <span className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+              <Link href="#" className="font-semibold text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                DiceDB/website
+              </Link>
+              <span className="text-muted-foreground">Improved the Navbar UX, and fixed some broken links. (Feb 2024)</span>
+            </span>
+          </li>
+
+          <li className="flex items-start gap-3">
+            <LeafIcon />
+            <span className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+              <Link href="#" className="font-semibold text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                MojaGlobal/flint-ui
+              </Link>
+              <span className="text-muted-foreground">Some UI fixes when I was getting started (Feb 2024)</span>
+            </span>
+          </li>
+        </ul>
+      </section> */}
+
+      <section className="flex flex-col gap-5">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-xl">
+          Achievements & Extra Activities
+        </h2>
+
+        <ul className="flex flex-col gap-4 text-sm">
+          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
+            <FaTrophy className="mt-0.5 shrink-0 text-yellow-400" size={14} />
+            <span className="font-semibold text-foreground">Hackathon Organizer</span>
+            <span className="text-muted-foreground">Organized and mentored participants in an intra-college Hackathon &amp; Quiz event for BCA students at CCLMS. (2024)</span>
+          </li>
+
+          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
+            <FaGitAlt className="mt-0.5 shrink-0 text-orange-400" size={14} />
+            <span className="font-semibold text-foreground">3× Open Source</span>
+            <span className="text-muted-foreground">Contributed to AsyncAPI, DiceDB, and MojaGlobal — improving UIs, fixing bugs, and adding features. (2024)</span>
+          </li>
+
+          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
+            <FaRocket className="mt-0.5 shrink-0 text-blue-400" size={14} />
+            <span className="font-semibold text-foreground">iOS & SwiftUI Dev</span>
+            <span className="text-muted-foreground">Self-taught Swift and SwiftUI to build native iOS apps alongside web development, including an AI-powered quiz app.</span>
+          </li>
+
+          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
+            <FaBrain className="mt-0.5 shrink-0 text-purple-400" size={14} />
+            <span className="font-semibold text-foreground">AI-Powered Projects</span>
+            <span className="text-muted-foreground">Developed an AI Quiz Generator (Web + iOS) using the Gemini API that auto-creates MCQs from uploaded PDFs.</span>
+          </li>
+
+          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
+            <FaPaintBrush className="mt-0.5 shrink-0 text-pink-400" size={14} />
+            <span className="font-semibold text-foreground">College UI/UX Lead</span>
+            <span className="text-muted-foreground">Led the UI/UX design of the CCLMS college website landing page, integrating modern scrolling libraries with traditional Indian aesthetics.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
   );
 }

@@ -78,7 +78,7 @@ const config: Config = {
             height: "0",
           },
         },
-        
+
         // --- ADD THESE NEW KEYFRAMES ---
         "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
@@ -87,6 +87,10 @@ const config: Config = {
         "fade-in-0": {
           from: { opacity: "0" },
           to: { opacity: "1" },
+        },
+        "blur-in": {
+          "0%": { opacity: "0", filter: "blur(12px)" },
+          "100%": { opacity: "1", filter: "blur(0)" },
         },
         "zoom-in-95": {
           from: { opacity: "0", transform: "scale(.95)" },
@@ -117,6 +121,7 @@ const config: Config = {
         // --- ADD THESE NEW ANIMATIONS ---
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         "fade-in-0": "fade-in-0 0.2s ease-out",
+        "blur-in": "blur-in 0.8s ease-out forwards",
         "zoom-in-95": "zoom-in-95 0.2s ease-out",
         "slide-in-from-top-2": "slide-in-from-top-2 0.2s ease-out",
         "slide-in-from-right-2": "slide-in-from-right-2 0.2s ease-out",
