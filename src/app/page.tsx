@@ -15,50 +15,63 @@ import {
 export default function Home() {
   return (
     <div className="mt-8 flex flex-col gap-12 pb-16 animate-blur-in">
-      <section className="flex flex-col gap-6">
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          Hi, I&apos;m Sayan Maity
-        </h1>
+      <section className="flex flex-row items-start justify-between gap-6">
+        <div className="flex flex-col gap-6">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            Sayan Maity
+          </h1>
 
-        <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
-          <li className="flex items-start gap-2">
-            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
-            <span>A full stack engineer from India, learning User experience</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
-            <span>
-              Currently working as Jr. Dev at,{" "}
-              <Link href="https://www.wearetechinnovator.com" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
-                TechInnovator
-              </Link>
-            </span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
-            <span>
-              Building{" "}
-              <Link href="https://swiftkitbetav1.vercel.app" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
-                SwiftKiit
-              </Link>
-              {" "}(Ready to use Components for your IOS Apps)
-            </span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
-            <span>Reach out if you want to find a way to work together!</span>
-          </li>
-        </ul>
+          <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+            <li className="flex items-start gap-2">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+              <span>A full stack engineer from India, learning User experience</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+              <span>
+                Currently working as Jr. Dev at,{" "}
+                <Link href="https://www.wearetechinnovator.com" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  TechInnovator
+                </Link>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+              <span>
+                Building{" "}
+                <Link href="https://swiftkitbetav1.vercel.app" className="font-medium text-foreground underline decoration-muted-foreground/50 underline-offset-4 hover:decoration-foreground">
+                  SwiftKiit
+                </Link>
+                {" "}(Ready to use Components for your IOS Apps)
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/50"></span>
+              <span>Reach out if you want to find a way to work together!</span>
+            </li>
+          </ul>
 
-        <div>
-          <a
-            href="/SayanMaity_Resume.pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-md bg-secondary/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-          >
-            <FaDownload size={12} />
-            Download CV
-          </a>
+          <div>
+            <a
+              href="/SayanMaity_Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-md bg-secondary/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            >
+              <FaDownload size={12} />
+              Download CV
+            </a>
+          </div>
+        </div>
+
+        <div className="shrink-0">
+          <Image
+            src="/sayanmaity.jpg"
+            alt="Sayan Maity"
+            width={100}
+            height={100}
+            className="rounded-full object-cover ring-2 ring-muted"
+            priority
+          />
         </div>
       </section>
 
