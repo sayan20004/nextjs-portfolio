@@ -86,3 +86,102 @@ const PageViewSchema = new Schema<IPageView>({
 
 export const PageView =
   models.PageView || model<IPageView>("PageView", PageViewSchema);
+
+// ── Project Model ─────────────────────────────────────────────────────────
+
+export interface IProjectLink {
+  name: string;
+  href: string;
+  icon: string;
+}
+
+export interface IProject extends Document {
+  name: string;
+  description: string;
+  href?: string;
+  image?: string;
+  tags: string[];
+  links: IProjectLink[];
+  createdAt: Date;
+}
+
+const ProjectLinkSchema = new Schema<IProjectLink>({
+  name: { type: String, required: true },
+  href: { type: String, required: true },
+  icon: { type: String, required: true },
+});
+
+const ProjectSchema = new Schema<IProject>({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  href: { type: String },
+  image: { type: String },
+  tags: [{ type: String }],
+  links: [ProjectLinkSchema],
+  createdAt: { type: Date, default: Date.now },
+});
+
+export const Project =
+  models.Project || model<IProject>("Project", ProjectSchema);
+
+// ── Experience Model ──────────────────────────────────────────────────────
+
+export interface IExperienceLink {
+  name: string;
+  href: string;
+  icon: string;
+}
+
+export interface IExperience extends Document {
+  name: string;
+  href: string;
+  title: string;
+  logo: string;
+  start: string;
+  end?: string;
+  description?: string[];
+  links?: IExperienceLink[];
+  type: "work" | "education";
+  createdAt: Date;
+}
+
+const ExperienceLinkSchema = new Schema<IExperienceLink>({
+  name: { type: String, required: true },
+  href: { type: String, required: true },
+  icon: { type: String, required: true },
+});
+
+const ExperienceSchema = new Schema<IExperience>({
+  name: { type: String, required: true },
+  href: { type: String, required: true },
+  title: { type: String, required: true },
+  logo: { type: String, required: true },
+  start: { type: String, required: true },
+  end: { type: String },
+  description: [{ type: String }],
+  links: [ExperienceLinkSchema],
+  type: { type: String, enum: ["work", "education"], required: true },
+  createdAt: { type: Date, default: Date.now },
+});
+
+export const Experience =
+  models.Experience || model<IExperience>("Experience", ExperienceSchema);
+
+// ── Social Model ──────────────────────────────────────────────────────────
+
+export interface ISocial extends Document {
+  name: string;
+  href: string;
+  icon: string;
+  order: number;
+}
+
+const SocialSchema = new Schema<ISocial>({
+  name: { type: String, required: true },
+  href: { type: String, required: true },
+  icon: { type: String, required: true },
+  order: { type: Number, default: 0 },
+});
+
+export const Social =
+  models.Social || model<ISocial>("Social", SocialSchema);

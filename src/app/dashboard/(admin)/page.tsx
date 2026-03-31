@@ -26,7 +26,7 @@ export default async function DashboardPage() {
   const posts = await getPosts();
 
   return (
-    <article className="mt-8 flex flex-col gap-8 pb-16">
+    <div className="flex flex-col gap-8">
       <h1 className="title">
         Welcome, {session?.user?.name || "Admin"}.
       </h1>
@@ -46,6 +46,6 @@ export default async function DashboardPage() {
         <h2 className="title mb-4 text-3xl">Visitor Analytics</h2>
         <AnalyticsPanel />
       </section>
-    </article>
+    </div>
   );
 }

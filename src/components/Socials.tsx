@@ -1,16 +1,17 @@
-import data from "@/data/socials.json";
-import { socialSchema } from "@/lib/schemas";
 import Icon from "./Icon";
+import dbConnect from "@/lib/db";
+import { Social as SocialModel } from "@/lib/models";
 
-export default function Socials() {
-  const socials = socialSchema.parse(data).socials;
+export default async function Socials() {
+  await dbConnect();
+  const socials = await SocialModel.find().sort({ order: 1 }).lean();
 
   return (
     <section className="flex gap-6">
-      {socials.map((item) => (
+      {socials.map((item: any) => (
         <a
           href={item.href}
-          key={item.name}
+          key={item._id.toString()}
           target="_blank"
           className="text-muted-foreground hover:text-foreground"
           rel="noopener noreferrer"
