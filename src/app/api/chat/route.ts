@@ -22,56 +22,53 @@ Do not make up information.
 **Sayan Maity's Context:**
 
 **Summary:**
-Sayan Maity is a ${
-  new Date().getFullYear() - 2004
-}-year-old second-year BCA (Bachelor of Computer Applications) student from West Bengal, India. He is a passionate Full-Stack Web Developer and UI/UX Designer specializing in the MERN stack (MongoDB, Express.js, React, Node.js), Next.js, and modern UI/UX design. He has strong skills in scalable front-end architecture and JWT-based authentication.
+Sayan Maity is a ${new Date().getFullYear() - 2004}-year-old Full-Stack Engineer and UI/UX Designer from West Bengal, India. He focuses on building high-performance web applications and native iOS experiences. He is currently working as a Jr. Developer at TechInnovator and is passionate about blending technical logic with creative design.
 
-**Contact:**
+**Contact & Socials:**
 - Email: sayanmaity600@gmail.com
 - LinkedIn: linkedin.com/in/sayan-maitydev
 - GitHub: github.com/sayan20004
+- Website: sayanmaity.me
+
+**Current Roles & Initiatives:**
+1. **Jr. Developer at TechInnovator**: Currently contributing to professional software development projects.
+2. **Founder of SwiftKiit**: Building a library of ready-to-use SwiftUI components to help developers build iOS apps faster.
+3. **Chetna**: Developing a mental health platform/app to help users share thoughts and improve well-being.
 
 **Education:**
-1.  **Contai College of Learning and Management Science (CCLMS)**
-    * Degree: Bachelor of Computer Applications (BCA)
-    * Duration: Aug 2023 - May 2025 (Expected)
-    * GPA: 8.0/10.0 (till 2nd year)
-    * Key Coursework: C, Data Structure and Algorithm, DBMS, Operating System.
-2.  **Higher Secondary Education (Bio-Science)**
-    * Duration: Jun 2020 - Mar 2022
+1. **Bachelor of Computer Applications (BCA)**
+   * Institution: Contai College of Learning and Management Science (CCLMS)
+   * Duration: 2023 - 2025 (Expected)
+   * GPA: 8.0/10.0 (Current)
+2. **Higher Secondary (Bio-Science)**
+   * Duration: 2020 - 2022
 
-**Work Experience & Initiatives:**
-1.  **Full-Stack Web Developer (Personal Projects)**
-    * Duration: 2022 - Present
-    * Description: Developed a secure credentials manager browser extension (Web2/Web3 login), a self-destructing file sharing system, and a dynamic To-Do app. He is skilled in integrating libraries like GSAP, Locomotive.js, and Three.js for rich UI/UX.
-2.  **UI/UX Designer**
-    * Duration: 2023 - Present
-    * Description: Skilled in Figma, wireframes, and prototyping. He designed UI concepts for educational and tech platforms and led the design for an intracollege hackathon landing page.
-3.  **College Hackathon Organizer**
-    * Duration: 2024
-    * Description: Organized and mentored participants in a college-wide Hackathon for BCA students, focusing on UI/UX design with modern scrolling libraries.
+**Experience & Achievements:**
+1. **Full-Stack Web Developer (Personal Projects)**
+   * Duration: 2022 - Present
+   * Specialized in MERN Stack, Next.js, and integrating motion libraries like GSAP and Locomotive.js.
+2. **College Hackathon Organizer (2024)**
+   * Served as the Event Head for an intra-college Hackathon & Quiz event. 
+   * Mentored BCA students and managed cross-departmental coordination (BCA, BBA, BHM).
+3. **iOS & SwiftUI Developer**
+   * Self-taught mobile developer focused on native Apple ecosystem development.
 
 **Key Technologies:**
--   **Frontend:** React.js, Next.js, Tailwind CSS, HTML5, CSS3, JavaScript (ES6+), Figma
--   **Backend:** Node.js, Express.js, PHP (basic), JWT Authentication, REST APIs
--   **Tools:** Git, GitHub, VS Code, Postman, Vercel
--   **Other:** WebGL (basic), GSAP, Locomotive.js, Three.js, Web3 Integration (basic)
+- **Frontend:** React, Next.js, Tailwind CSS, SwiftUI (iOS), JavaScript, Figma
+- **Backend:** Node.js, Express.js, MongoDB, JWT Authentication
+- **AI/ML Integration:** Google Gemini API, OpenAI API
+- **Tools:** Git, GitHub, VS Code, Postman, Vercel
 
 **Featured Projects:**
-1.  **AI Quiz Generator (Web)**
-    * Description: A full-stack MERN application that uses the Google Gemini API to automatically generate quizzes from uploaded PDF notes.
-    * Tech: React, Node.js, MongoDB, Express.js, Gemini API, MERN
-    * Links: GitHub (github.com/sayan20004/aiquiz), Live (aiquizv2.vercel.app)
-2.  **Uber Clone**
-    * Description: A full-stack MERN ride-sharing web app. Features real-time location tracking, ride matching, and fare estimation using Socket.IO and Google Maps API.
-    * Tech: React, Node.js, Socket.IO, Google Maps API, MERN
-    * Links: GitHub (github.com/sayan20004/UberClone), Live (uberclonev2.vercel.app)
-3.  **AI Quiz App (iOS)**
-    * Description: A native iOS quiz application built with SwiftUI. Features user authentication, PDF uploading, and AI-powered quiz generation.
-    * Tech: Swift, SwiftUI, iOS, AI
-    * Links: GitHub (github.com/sayan20004/iosaiquizapp)
-`;
+1. **SwiftKiit**: A UI kit for iOS developers featuring modular, ready-to-use SwiftUI components.
+2. **AI Quiz Generator (Web & iOS)**: A MERN and SwiftUI application that uses the Gemini API to generate MCQs automatically from uploaded PDF notes.
+3. **Snappy**: An advanced context-based Todo web application.
+4. **Uber Clone**: A real-time ride-sharing web app built with the MERN stack and Socket.IO.
+5. **Screenshot Tool**: A utility that transforms websites into shareable, presentation-ready images.
 
+**Personal Interests:**
+Sayan is a "Tech and Coding enthusiast" who also enjoys photography, image editing, and playing chess.
+`;
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
