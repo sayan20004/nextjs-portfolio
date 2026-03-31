@@ -51,7 +51,7 @@ export default function Chatbot() {
         )}
       >
         <CardHeader>
-          <CardTitle>Saya-AI Assistant</CardTitle>
+          <CardTitle>Sam</CardTitle>
         </CardHeader>
         <CardContent className="flex h-[50vh] flex-col">
           {/* Message List */}
