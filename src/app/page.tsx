@@ -204,12 +204,6 @@ export default function Home() {
           </li>
 
           <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
-            <FaGitAlt className="mt-0.5 shrink-0 text-orange-400" size={14} />
-            <span className="font-semibold text-foreground">3× Open Source</span>
-            <span className="text-muted-foreground">Contributed to AsyncAPI, DiceDB, and MojaGlobal — improving UIs, fixing bugs, and adding features. (2024)</span>
-          </li>
-
-          <li className="grid grid-cols-[20px_140px_1fr] items-start gap-x-3">
             <FaRocket className="mt-0.5 shrink-0 text-blue-400" size={14} />
             <span className="font-semibold text-foreground">iOS & SwiftUI Dev</span>
             <span className="text-muted-foreground">Self-taught Swift and SwiftUI to build native iOS apps alongside web development, including an AI-powered quiz app.</span>
