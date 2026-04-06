@@ -145,6 +145,7 @@ export default function ProjectEditor({ projectToEdit }: { projectToEdit?: any }
           {imagePreview && (
             <div className="mt-4">
               <label className="text-sm font-medium block mb-2">Image Preview</label>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imagePreview}
                 alt="Project preview"

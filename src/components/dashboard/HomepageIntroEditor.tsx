@@ -177,6 +177,7 @@ export default function HomepageIntroEditor({ intro }: { intro: any }) {
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium">Photo Preview</label>
               <div className="w-32 h-32 rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-muted-foreground/20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photoPreview}
                   alt="Preview"
@@ -238,6 +239,7 @@ export default function HomepageIntroEditor({ intro }: { intro: any }) {
                 <div className="flex gap-4">
                   <div className="w-24 h-24 rounded-full bg-slate-400 flex-shrink-0 flex items-center justify-center text-xs text-white overflow-hidden">
                     {photoPreview && photoPreview.startsWith("data:") ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={photoPreview} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
                       "Photo"

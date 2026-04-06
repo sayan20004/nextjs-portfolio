@@ -156,6 +156,7 @@ export default async function Home() {
                 {project.images?.length > 0 && (
                   <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
                     {project.images.slice(0, 3).map((img: string, imgIdx: number) => (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         key={imgIdx}
                         src={img}

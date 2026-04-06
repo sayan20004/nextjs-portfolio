@@ -56,6 +56,7 @@ export default async function ProjectPage() {
                   {project.images?.length > 0 && (
                     <div className="flex gap-2 overflow-hidden rounded-md">
                       {project.images.slice(0, 2).map((img: string, imgIdx: number) => (
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={imgIdx}
                           src={img}

@@ -221,6 +221,7 @@ export default function SideProjectEditor({ project }: { project?: any }) {
                     key={idx}
                     className="relative w-32 h-32 rounded-lg overflow-hidden border"
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img}
                       alt={`Project image ${idx + 1}`}

@@ -78,6 +78,7 @@ export default async function SideProjectsPage() {
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {project.images.map((img: string, idx: number) => (
+                          // eslint-disable-next-line @next/next/no-img-element
                           <img
                             key={idx}
                             src={img}

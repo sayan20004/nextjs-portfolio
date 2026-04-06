@@ -29,7 +29,7 @@ export default async function EditBlogPage({
       <div>
         <h1 className="title text-3xl">Edit Blog Post</h1>
         <p className="text-sm text-muted-foreground mt-2">
-          Update "{post.title}"
+          Update &quot;{post.title}&quot;
         </p>
       </div>
 
