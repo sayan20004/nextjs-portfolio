@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import dbConnect from "@/lib/db";
-import { Project, Experience, Social } from "@/lib/models";
+import { Project, Experience, Social, HomepageIntro } from "@/lib/models";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 
@@ -108,4 +108,44 @@ export async function deleteSocial(id: string) {
   revalidatePath("/");
   revalidatePath("/dashboard/socials");
   return { success: true };
+}
+
+// ==========================================
+// HOMEPAGE INTRO
+// ==========================================
+
+export async function getOrCreateHomepageIntro() {
+  await dbConnect();
+  let intro = await HomepageIntro.findOne({});
+  
+  if (!intro) {
+    // Create a default if none exists
+    intro = await HomepageIntro.create({
+      name: "Your Name",
+      title: "Your Title",
+      bio: ["Bio line 1"],
+      photo: "/profile.jpg",
+    });
+  }
+  
+  return JSON.parse(JSON.stringify(intro));
+}
+
+export async function updateHomepageIntro(data: any) {
+  await requireAuth();
+  await dbConnect();
+  
+  let intro = await HomepageIntro.findOne({});
+  
+  if (!intro) {
+    intro = await HomepageIntro.create(data);
+  } else {
+    intro = await HomepageIntro.findByIdAndUpdate(intro._id, data, { new: true });
+  }
+  
+  revalidatePath("/");
+  revalidatePath("/dashboard");
+  revalidatePath("/dashboard/homepage-intro");
+  
+  return JSON.parse(JSON.stringify(intro));
 }

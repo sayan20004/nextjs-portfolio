@@ -14,9 +14,11 @@ import { createProject, updateProject } from "@/lib/cms-actions";
 export default function ProjectEditor({ projectToEdit }: { projectToEdit?: any }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [isUploading, setIsUploading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string>(projectToEdit?.image || "");
   const isEditMode = !!projectToEdit;
 
-  const { register, control, handleSubmit, reset, formState: { errors } } = useForm({
+  const { register, control, handleSubmit, reset, formState: { errors }, watch, setValue } = useForm({
     defaultValues: {
       name: projectToEdit?.name || "",
       description: projectToEdit?.description || "",
@@ -31,6 +33,53 @@ export default function ProjectEditor({ projectToEdit }: { projectToEdit?: any }
     control,
     name: "links",
   });
+
+  const uploadImage = async (file: File): Promise<string> => {
+    try {
+      setIsUploading(true);
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const data = await response.json();
+      return data.url || data.data?.url;
+    } catch (error) {
+      console.error("File upload error:", error);
+      toast.error("Failed to upload image");
+      throw error;
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      try {
+        // Show preview
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImagePreview(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+
+        // Upload file
+        const url = await uploadImage(file);
+        setValue("image", url);
+        toast.success("Image uploaded!");
+      } catch (error) {
+        // Error already shown
+      }
+    }
+  };
 
   const onSubmit = (data: any) => {
     // Convert tags from comma-separated string to array
@@ -75,10 +124,34 @@ export default function ProjectEditor({ projectToEdit }: { projectToEdit?: any }
               <Input {...register("href")} placeholder="https://..." />
             </div>
             <div>
-              <label className="text-sm font-medium">Image URL</label>
-              <Input {...register("image")} placeholder="https://..." />
+              <label className="text-sm font-medium">Project Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                disabled={isUploading}
+                className="block w-full text-sm text-muted-foreground
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-md file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-secondary file:text-foreground
+                  hover:file:bg-secondary/80
+                  cursor-pointer"
+              />
             </div>
           </div>
+
+          {/* Image Preview */}
+          {imagePreview && (
+            <div className="mt-4">
+              <label className="text-sm font-medium block mb-2">Image Preview</label>
+              <img
+                src={imagePreview}
+                alt="Project preview"
+                className="w-32 h-32 object-cover rounded-lg border"
+              />
+            </div>
+          )}
           <div>
             <label className="text-sm font-medium">Tags (comma separated)</label>
             <Input {...register("tags")} placeholder="React, Next.js, Tailwind" />
@@ -105,7 +178,7 @@ export default function ProjectEditor({ projectToEdit }: { projectToEdit?: any }
             </Button>
           </div>
 
-          <Button type="submit" disabled={isPending} className="mt-4">
+          <Button type="submit" disabled={isPending || isUploading} className="mt-4">
             {isPending && <ReloadIcon className="mr-2 animate-spin" />}
             {isEditMode ? "Update Project" : "Create Project"}
           </Button>

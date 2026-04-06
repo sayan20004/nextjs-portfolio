@@ -59,10 +59,19 @@ export async function GET() {
         );
 
         const pageCounts: Record<string, number> = {};
+        const countryCounts: Record<string, number> = {};
+        
         for (const v of views as any[]) {
             pageCounts[v.page] = (pageCounts[v.page] || 0) + 1;
+            countryCounts[v.country] = (countryCounts[v.country] || 0) + 1;
         }
+        
         const topPages = Object.entries(pageCounts)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5);
+
+        const topCountries = Object.entries(countryCounts)
+            .filter(([country]) => country !== "Local" && country !== "Unknown")
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5);
 
@@ -78,6 +87,7 @@ export async function GET() {
             total,
             uniqueCities: cities.length,
             topPages,
+            topCountries,
             avgDuration,
             recent: JSON.parse(JSON.stringify(views.slice(0, 20))),
         });

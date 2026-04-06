@@ -5,7 +5,7 @@ import { DocumentInterface } from "@langchain/core/documents";
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import matter from "gray-matter"; // <-- 1. ADD THIS IMPORT
+import matter from "gray-matter"; 
 
 import * as fs from "fs";
 import * as path from "path";

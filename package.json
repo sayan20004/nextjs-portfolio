@@ -8,7 +8,8 @@
     "gen": "npx ts-node ./scripts/generate.ts",
     "build-with-gen": "npm run gen && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "npx ts-node ./scripts/migrate-data.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^0.0.26",

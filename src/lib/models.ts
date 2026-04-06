@@ -134,7 +134,7 @@ export interface IExperienceLink {
 
 export interface IExperience extends Document {
   name: string;
-  href: string;
+  href?: string;
   title: string;
   logo: string;
   start: string;
@@ -153,7 +153,7 @@ const ExperienceLinkSchema = new Schema<IExperienceLink>({
 
 const ExperienceSchema = new Schema<IExperience>({
   name: { type: String, required: true },
-  href: { type: String, required: true },
+  href: { type: String },
   title: { type: String, required: true },
   logo: { type: String, required: true },
   start: { type: String, required: true },
@@ -185,3 +185,55 @@ const SocialSchema = new Schema<ISocial>({
 
 export const Social =
   models.Social || model<ISocial>("Social", SocialSchema);
+
+// ── Homepage Intro Model ──────────────────────────────────────────────────────
+
+export interface IHomepageIntro extends Document {
+  name: string;
+  title: string;
+  bio: string[];
+  photo: string;
+  cvLink?: string;
+  tagline?: string;
+  updatedAt: Date;
+}
+
+const HomepageIntroSchema = new Schema<IHomepageIntro>({
+  name: { type: String, required: true },
+  title: { type: String, required: true },
+  bio: [{ type: String }],
+  photo: { type: String, required: true },
+  cvLink: { type: String },
+  tagline: { type: String },
+  updatedAt: { type: Date, default: Date.now },
+});
+
+export const HomepageIntro =
+  models.HomepageIntro ||
+  model<IHomepageIntro>("HomepageIntro", HomepageIntroSchema);
+
+// ── Side Project Model ────────────────────────────────────────────────────
+
+export interface ISideProject extends Document {
+  title: string;
+  description: string;
+  images: string[];
+  link: string;
+  usersOnline: number;
+  showOnHomepage: boolean;
+  createdAt: Date;
+}
+
+const SideProjectSchema = new Schema<ISideProject>({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  images: [{ type: String }],
+  link: { type: String, required: true },
+  usersOnline: { type: Number, default: 0 },
+  showOnHomepage: { type: Boolean, default: true },
+  createdAt: { type: Date, default: Date.now },
+});
+
+export const SideProject =
+  models.SideProject ||
+  model<ISideProject>("SideProject", SideProjectSchema);
