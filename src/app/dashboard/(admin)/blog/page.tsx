@@ -90,7 +90,7 @@ export default async function BlogPage() {
                   >
                     Edit
                   </Link>
-                  <DeletePostButton id={post._id} />
+                  <DeletePostButton postId={post._id} />
                 </div>
               </div>
             ))}
