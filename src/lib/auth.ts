@@ -1,36 +1,53 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-// Export authOptions from here
 export const authOptions: AuthOptions = {
   providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username or ID", type: "text", placeholder: "wassammmy" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const username = credentials?.username?.trim();
+        const password = credentials?.password?.trim();
+
+        if (
+          (username === "wassammmy" && password === "sayanwas") ||
+          (process.env.ADMIN_USERNAME &&
+            username === process.env.ADMIN_USERNAME &&
+            password === process.env.ADMIN_PASSWORD)
+        ) {
+          return {
+            id: "1",
+            name: "Sayan Maity",
+            email: "sayanmaity600@gmail.com",
+          };
+        }
+        return null;
+      },
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "fallback_secret_key_sayan_portfolio",
   pages: {
     signIn: "/dashboard/login",
   },
   callbacks: {
-    // MODIFIED CALLBACK:
-    // We check against the GitHub username ("login") from the "profile" object,
-    // as the "user.email" can be null or undefined.
-    async signIn({ user, profile }) {
-      // Cast profile to 'any' to access provider-specific properties
-      const githubProfile = profile as any; 
-      
-      // Check if the user logging in is you
-      if (githubProfile?.login === "sayan20004") {
-        return true; // Allow sign-in
-      } else {
-        // Log the attempted sign-in and deny access
-        console.warn(
-          `Unauthorized login attempt by GitHub user: ${githubProfile?.login}`
-        );
-        return "/dashboard/login?error=AccessDenied"; // Redirect to login with error
+    async signIn({ account, profile }) {
+      if (account?.provider === "credentials") {
+        return true;
       }
+      const githubProfile = profile as any;
+      if (githubProfile?.login === "sayan20004") {
+        return true;
+      }
+      return "/dashboard/login?error=AccessDenied";
     },
   },
 };

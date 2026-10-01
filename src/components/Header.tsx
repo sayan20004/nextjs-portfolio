@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 py-6 bg-background">
+    <header className="sticky top-0 z-50 py-6 bg-background/80 backdrop-blur-md">
       <nav className="flex items-center justify-between">
         <ul className="flex items-center gap-6">
           {navLink("/", <Home className="size-4" />, "Home")}
@@ -54,7 +54,7 @@ export default function Header() {
             <span className="sr-only">GitHub</span>
             <Github className="size-4" />
           </a>
-          <a
+          {/* <a
             href="https://x.com/sayanwas?s=21"
             target="_blank"
             rel="noopener noreferrer"
@@ -62,7 +62,7 @@ export default function Header() {
           >
             <span className="sr-only">Twitter</span>
             <Twitter className="size-4" />
-          </a>
+          </a> */}
           <a
             href="mailto:sayanmaity600@gmail.com"
             className="text-muted-foreground transition-colors hover:text-foreground"

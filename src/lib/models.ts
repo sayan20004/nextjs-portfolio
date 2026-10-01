@@ -7,6 +7,12 @@ export interface IComment extends Document {
   createdAt: Date;
 }
 
+export interface ITopic {
+  id: string;
+  title: string;
+  timestamp?: string;
+}
+
 // Interface for Post
 export interface IPost extends Document {
   title: string;
@@ -14,6 +20,9 @@ export interface IPost extends Document {
   description: string;
   thumbnail: string; // URL to an image
   content: string; // MDX content
+  category?: string;
+  topics?: ITopic[];
+  seoSchema?: string;
   views: number;
   likes: number;
   createdAt: Date;
@@ -27,6 +36,13 @@ const CommentSchema = new Schema<IComment>({
   createdAt: { type: Date, default: Date.now },
 });
 
+// Schema for Topic
+const TopicSchema = new Schema<ITopic>({
+  id: { type: String, required: true },
+  title: { type: String, required: true },
+  timestamp: { type: String },
+});
+
 // Schema for Post
 const PostSchema = new Schema<IPost>({
   title: { type: String, required: true },
@@ -34,6 +50,9 @@ const PostSchema = new Schema<IPost>({
   description: { type: String, required: true },
   thumbnail: { type: String, required: true },
   content: { type: String, required: true },
+  category: { type: String, default: "ARTICLE" },
+  topics: [TopicSchema],
+  seoSchema: { type: String },
   views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now },
@@ -53,6 +72,7 @@ PostSchema.set("toJSON", { virtuals: true });
 export const Comment =
   models.Comment || model<IComment>("Comment", CommentSchema);
 export const Post = models.Post || model<IPost>("Post", PostSchema);
+
 export type PlainPost = {
   _id: string;
   title: string;
@@ -60,6 +80,9 @@ export type PlainPost = {
   description: string;
   thumbnail: string;
   content: string;
+  category?: string;
+  topics?: Array<{ id: string; title: string; timestamp?: string }>;
+  seoSchema?: string;
   views: number;
   likes: number;
   createdAt: string;
